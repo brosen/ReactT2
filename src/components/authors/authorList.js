@@ -21,7 +21,6 @@ return (
 	<div>
 		<table className="table">
 			<thead>
-				<th></th>
 				<th>ID</th>
 				<th>Name</th>
 			</thead>
