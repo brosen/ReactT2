@@ -1,8 +1,10 @@
 $ = jQuery = require('jquery');
 var React = require('react');
 var Home = require('./components/homePage');
+var Authors = require('./components/authors/authorPage');
 var About = require('./components/about/aboutPage');
 var Header = require('./components/common/header');
+
 
 (function (win){
     "use strict";
@@ -11,6 +13,8 @@ var Header = require('./components/common/header');
             var Child; //which child do we want to render
             switch (this.props.route) {
                 case 'about': Child = About;
+                    break;
+                case 'authors': Child = Authors;
                     break;
                 default: Child = Home;
             }
