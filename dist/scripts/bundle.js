@@ -37137,6 +37137,20 @@ module.exports = {
 var React = require('react');
 
 var About = React.createClass({displayName: "About",
+    statics: {
+        willTransitionTo: function (transition, params, query, callback) {
+            if (!confirm('Are you sure, its boring')) {
+                transition.About();
+            } else {
+                callback();
+            }
+        },
+        willTransitionFrom: function (transition, component) {
+            if (!confirm('Are you sure, its exiting')) {
+                transition.About();
+            }
+        }
+    },
     render: function () {
         return (
             React.createElement("div", null, 
@@ -37263,7 +37277,7 @@ module.exports = AuthorPage;
 
 var React = require('react');
 var Router = require('react-router');
-var Link = Router.Link
+var Link = Router.Link;
 
 var About = React.createClass({displayName: "About",
     render: function () {
@@ -37292,7 +37306,7 @@ module.exports = About;
 
 var React = require('react');
 var Router = require('react-router');
-var Link = Router.Link
+var Link = Router.Link;
 
 var Home = React.createClass({displayName: "Home",
     render: function () {
@@ -37300,7 +37314,7 @@ var Home = React.createClass({displayName: "Home",
             React.createElement("div", {className: "jumbotron"}, 
                 React.createElement("h1", null, "Plural Sight Admin"), 
                 React.createElement("p", null, "React, react router, and flux for web apps"), 
-                React.createElement(Link, {to: "about", className: "btn btn-primary btn-lg"}, "Learn more"), " //route in route.js for 'about'"
+                React.createElement(Link, {to: "about", className: "btn btn-primary btn-lg"}, "Learn more")
             )
         );
     }
@@ -37335,6 +37349,7 @@ var React = require('react');
 var Router = require('react-router');
 var routes = require('./routes');
 
+//Router.run(routes, Router.HistoryLocation, function (Handler) {  //for no hash in url, may not work with older browser
 Router.run(routes, function (Handler) {
     React.render(React.createElement(Handler, null), document.getElementById('app'));
 });
@@ -37348,13 +37363,17 @@ var Router = require('react-router');
 var DefaultRoute = Router.DefaultRoute;
 var Route = Router.Route;
 var NotFoundRoute = Router.NotFoundRoute;
+var Redirect = Router.Redirect;
 
 var routes = (
     React.createElement(Route, {name: "app", path: "/", handler: require('./components/app')}, 
         React.createElement(DefaultRoute, {handler: require('./components/homePage')}), 
         React.createElement(Route, {name: "authors", handler: require('./components/authors/authorPage')}), 
         React.createElement(Route, {name: "about", handler: require('./components/about/aboutPage')}), 
-        React.createElement(NotFoundRoute, {handler: require('./components/notFoundPage')})
+        React.createElement(NotFoundRoute, {handler: require('./components/notFoundPage')}), 
+        React.createElement(Redirect, {from: "about-us", to: "about"}), " //removed pages", 
+        React.createElement(Redirect, {from: "awthors", to: "authors"}), " //for common typos", 
+        React.createElement(Redirect, {from: "about/*", to: "about"}), " //sub dir"
     )
 );
 

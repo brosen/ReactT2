@@ -2,7 +2,7 @@
 
 var React = require('react');
 var Router = require('react-router');
-var Link = Router.Link
+var Link = Router.Link;
 
 var Home = React.createClass({
     render: function () {
@@ -10,7 +10,7 @@ var Home = React.createClass({
             <div className="jumbotron">
                 <h1>Plural Sight Admin</h1>
                 <p>React, react router, and flux for web apps</p>
-                <Link to="about" className="btn btn-primary btn-lg">Learn more</Link> //route in route.js for 'about'
+                <Link to="about" className="btn btn-primary btn-lg">Learn more</Link>
             </div>
         );
     }
