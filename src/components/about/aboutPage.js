@@ -6,14 +6,14 @@ var About = React.createClass({
     statics: {
         willTransitionTo: function (transition, params, query, callback) {
             if (!confirm('Are you sure, its boring')) {
-                transition.About();
+                transition.abort();
             } else {
                 callback();
             }
         },
         willTransitionFrom: function (transition, component) {
             if (!confirm('Are you sure, its exiting')) {
-                transition.About();
+                transition.abort();
             }
         }
     },
