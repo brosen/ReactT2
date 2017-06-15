@@ -2201,7 +2201,7 @@
     },
     "object-assign": {
       "version": "3.0.0",
-      "from": "object-assign@>=3.0.0 <4.0.0",
+      "from": "https://registry.npmjs.org/object-assign/-/object-assign-3.0.0.tgz",
       "resolved": "https://registry.npmjs.org/object-assign/-/object-assign-3.0.0.tgz"
     },
     "object-keys": {
@@ -3013,6 +3013,11 @@
       "version": "0.0.31",
       "from": "tmp@>=0.0.31 <0.0.32",
       "resolved": "https://registry.npmjs.org/tmp/-/tmp-0.0.31.tgz"
+    },
+    "toastr": {
+      "version": "2.1.0",
+      "from": "toastr@2.1.0",
+      "resolved": "https://registry.npmjs.org/toastr/-/toastr-2.1.0.tgz"
     },
     "trim-newlines": {
       "version": "1.0.0",
