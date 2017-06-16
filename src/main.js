@@ -2,6 +2,9 @@
 var React = require('react');
 var Router = require('react-router');
 var routes = require('./routes');
+var InitializeActions = require('./actions/initializeActions');
+
+InitializeActions.initApp();
 
 //Router.run(routes, Router.HistoryLocation, function (Handler) {  //for no hash in url, may not work with older browser
 Router.run(routes, function (Handler) {
